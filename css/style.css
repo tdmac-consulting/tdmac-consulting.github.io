@@ -1,0 +1,378 @@
+/* ----------- Initialisation ---------- */
+
+/* Imports */
+@import "normalize.css";
+
+/* Colors */
+:root {
+	/* Primary */
+	--primary50: #fffcd0;
+	--primary100: #fff9a0;
+	--primary200: #fff889;
+	--primary300: #fff671;
+	--primary400: #fff459;
+	--primary500: #fff241;
+	--primary600: #e0d439;
+	--primary700: #c0b631;
+	--primary800: #a09829;
+	--primary900: #807921;
+
+	/* Secondary */
+	--secondary50: #defff9;
+	--secondary100: #bdfff3;
+	--secondary200: #adfff0;
+	--secondary300: #9cffed;
+	--secondary400: #8bffea;
+	--secondary500: #7affe7;
+	--secondary600: #6be0cb;
+	--secondary700: #5cc0ae;
+	--secondary800: #4da091;
+	--secondary900: #3d8074;
+}
+
+/* Fonts */
+@font-face {
+	font-family: "Josefin Sans";
+	src: url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap");
+}
+
+html {
+	font-family: "Josefin Sans", sans-serif;
+	font-size: 16px;
+	font-weight: 500;
+	color: var(--secondary900);
+}
+
+/* Body margin clear */
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/* Headings Reset */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 500;
+	margin: 0;
+	padding: 0;
+}
+
+/* List Reset */
+ol,
+ul {
+	list-style: none;
+	padding-left: 0;
+	margin-left: 0;
+}
+
+/* Link Reset */
+a {
+	text-decoration: none;
+	color: inherit;
+	padding: 0.5em 1em;
+	margin: -0.5em -1em;
+	border-radius: 2em;
+}
+
+a:hover {
+	background: var(--secondary50);
+}
+
+a:focus {
+	outline: none;
+	border: 2px solid currentColor;
+}
+
+/* ----------- Styles ---------- */
+/* Global */
+.block {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-image: linear-gradient(
+		0,
+		white 0%,
+		var(--secondary50) 20%,
+		var(--secondary50) 30%,
+		white 100%
+	);
+}
+.block:nth-of-type(2n) {
+	background: white;
+}
+
+.wrapper {
+	max-width: 1100px;
+	margin: 2rem 0;
+}
+
+.title {
+	text-align: center;
+	font-size: 2rem;
+	font-weight: 700;
+	padding: 3rem;
+	border-bottom: 0.25rem solid currentColor;
+}
+.subtitle {
+	display: block;
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: 0.4em;
+}
+
+.heading {
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+	margin: 3rem 0 0;
+}
+
+.subhead {
+	font-size: 1.25rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	margin: 0 0 1rem;
+	padding: 0 0 0.25rem;
+}
+
+.sr_only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+/* Contact */
+.contact {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 1rem 0;
+	background-image: none;
+	background: white;
+    font-size: 0.8rem;
+}
+
+.contact_list {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-evenly;
+	gap: 1em;
+}
+
+.contact_item {
+	display: block;
+}
+
+.contact_link {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.contact_icon {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.contact_detail,
+.contact_address {
+	margin-left: 1em;
+}
+
+.contact_address {
+	font-style: normal;
+}
+
+/* Skills */
+.skl_list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 4rem;
+}
+
+.skl_item {
+	min-width: 170px;
+	padding: 1em;
+	margin: -1em -1em 0;
+	border-radius: 1em;
+	background: white;
+	box-shadow: 0em 0em rgba(255, 255, 255, 1),
+		-0.3em -0.3em 2em rgba(255, 255, 255, 0.25),
+		0.3em -0.3em 2em rgba(255, 255, 255, 0.25),
+		0em 0.5em 0.9em rgba(0, 0, 0, 0.05);
+}
+
+.skl .subhead {
+	text-align: center;
+	border: 0.25rem solid transparent;
+	border-bottom: 0.075rem solid currentColor;
+	border-radius: 0.01rem;
+}
+
+.skl_subitem {
+	padding: 0.5em 1em;
+}
+
+/* Experience / Education Headers */
+.exp .wrapper,
+.edu .wrapper {
+	width: 70%;
+	max-width: 800px;
+}
+
+.exp_list,
+.edu_list {
+	display: flex;
+}
+
+.exp_header,
+.edu_header {
+	display: flex;
+	flex-direction: column;
+}
+
+.exp_subwrap,
+.edu_subwrap {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.25rem;
+	margin-bottom: 0.5rem;
+}
+
+.exp .subhead,
+.edu .subhead {
+	padding: 0;
+	margin: 0 0.5em 0 0;
+}
+
+.exp_date,
+.edu_date {
+	display: block;
+	height: 1em;
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-transform: lowercase;
+	text-align: center;
+	color: var(--secondary800);
+	padding: 0.25em 0.75em;
+	border-radius: 1em;
+	text-shadow: 2px 1px 1px rgba(255, 255, 255, 0.5),
+		-2px -1px 1px rgba(255, 255, 255, 0.5);
+	background-image: radial-gradient(
+		circle,
+		var(--secondary100) 0%,
+		var(--secondary100) 80%,
+		var(--secondary50) 100%
+	);
+}
+
+.exp_org,
+.edu_org {
+	font-weight: 200;
+	text-transform: uppercase;
+	margin-bottom: 0.25rem;
+}
+/* Experience */
+.exp_list {
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: 2.5rem;
+}
+
+.exp_summary {
+	line-height: 1.5;
+}
+
+/* Education */
+.edu_list {
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 2.5rem;
+}
+.edu_subwrap {
+	flex-direction: column;
+	align-items: flex-start;
+}
+.edu_summary {
+	font-weight: 600;
+}
+
+/* ----------- Media Queries ---------- */
+/* small */
+@media (min-width: 640px) {
+	.title {
+		font-size: 4rem;
+	}
+	.subtitle {
+		font-size: 1.25rem;
+		letter-spacing: 0.4em;
+	}
+
+	.heading {
+		font-size: 2rem;
+	}
+
+	.contact_list {
+		flex-direction: row;
+		gap: 2em;
+	}
+	.edu_list {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	.edu_item {
+		width: 40%;
+	}
+	.edu_item:first-of-type {
+		width: 100%;
+	}
+}
+/* medium */
+@media (min-width: 786px) {
+	.skl_list {
+		max-width: 700px;
+	}
+	.edu_subwrap {
+		flex-direction: row;
+		align-items: center;
+	}
+}
+/* large */
+@media (min-width: 1024px) {
+	.skl_list {
+		gap: 2.6rem;
+		max-width: 1100px;
+	}
+}
+/* x-large */
+@media (min-width: 1280px) {
+}
+/* 2x-large */
+@media (min-width: 1536px) {
+}
