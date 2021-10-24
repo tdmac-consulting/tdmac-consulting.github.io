@@ -295,7 +295,25 @@ a:focus {
   font-weight: 600;
 }
 
-/* Education */
+/* Banner */
+.banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 100%;
+    padding: 1rem;
+    background: var(--secondary900);
+    color: white;
+    text-align: center;
+    gap: 1rem;
+}
+.banner-link {
+    text-decoration: underline;
+}
+.banner-link:hover {
+    color: var(--secondary900);
+}
 
 /* ----------- Media Queries ---------- */
 /* print */
@@ -416,7 +434,12 @@ a:focus {
   .edu_subwrap {
     width: auto;
   }
+  /* Banner */
+  .footer {
+      display: none;
+  }
 }
+
 /* small */
 @media (min-width: 640px) {
   .title {
