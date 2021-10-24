@@ -157,6 +157,7 @@ a:focus {
 	color: white;
 	padding: 0.75em 1em;
 	margin: 0.5rem 0;
+	border: 2px solid var(--primary900);
 	border-radius: 0.5rem;
 	text-align: center;
 }
@@ -245,6 +246,9 @@ a:focus {
 	margin: 0.5rem 0;
 }
 .card-description {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 	min-height: 100px;
 }
 
