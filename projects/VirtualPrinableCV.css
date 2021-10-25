@@ -300,8 +300,6 @@ a:focus {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    position: absolute;
-    width: 100%;
     padding: 1rem;
     background: var(--secondary900);
     color: white;
