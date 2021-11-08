@@ -183,6 +183,9 @@ a:focus {
 	text-align: center;
 	padding: 0.5em 0.5em 0.25em;
 }
+.alert {
+	background: rgb(212, 98, 59);
+}
 
 /* Projects */
 .grid-container {
@@ -196,6 +199,7 @@ a:focus {
 	"project3";
 	gap: 1rem;
 	margin: 2rem 0.25rem;
+	min-height: 80vh;
 }
 
 .grid-item_1 {
