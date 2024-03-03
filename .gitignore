@@ -3,7 +3,7 @@
 /public/storage
 /public/vendor/statamic
 /public/img/
-/public/static/
+#/public/static/
 /storage/*.key
 /vendor
 .env
