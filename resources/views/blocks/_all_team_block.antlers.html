@@ -1,0 +1,34 @@
+<!-- resources/views/blocks/_all_team_block.antlers.html -->
+<section class="all-team-block">
+    <div class="flex flex-col w-full container mx-auto px-standard gap-8">
+        {{# Heading #}}
+        {{ if heading }}
+        <h2 class="text-sm xs:text-2xl md:text-3xl lg:text-4xl uppercase tracking-ultrawide text-center">
+            {{ heading }}
+        </h2>
+        {{ /if }}
+        {{# Form #}}
+        <form class="flex flex-row gap-2 w-full" action="{{uri}}">
+            <label for="search" class="sr-only">Search</label>
+            {{ partial:vendor/statamic/forms/fields/text input_type="search" autocomplete="search" id="search" handle="q" placeholder="Search" class="w-full border-2 border-neutralDark" }}
+            {{ partial:components/button type="submit" button_text="Search" class="w-auto"}}
+        </form>
+        {{# Results #}}
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+            {{ if !get:q }}
+                {{ collection:team }}
+                    {{ partial:components/team_card }}
+                {{ /collection:team }}
+            {{ else }}
+                {{ search:results index="team" }}
+                    {{ if no_results }}
+                        <p class="w-full font-light text-base xs:text-lg uppercase tracking-widest text-center col-span-full">No results found for "{{ get:q }}". Try searching for a business name or service.</p>
+                    {{ else }}
+                        {{ partial:components/team_card }}
+                    {{ /if }}
+                {{ /search:results }}
+            {{ /if }}
+        </ul>
+    </div>
+</section>
+<!-- End: resources/views/blocks/_all_team_block.antlers.html -->

@@ -1,0 +1,34 @@
+title: SVG
+fields:
+  -
+    handle: id
+    field:
+      placeholder: unique_id
+      input_type: text
+      character_limit: 24
+      prepend: svg_
+      antlers: false
+      display: ID
+      type: text
+      icon: text
+      instructions: 'This must be a unique svg id with no spaces.'
+      listable: hidden
+      instructions_position: above
+      validate:
+        - required
+        - 'unique_entry_value:{collection},{id},{site}'
+  -
+    handle: viewbox
+    field:
+      placeholder: '0 0 32 32 (example values)'
+      input_type: text
+      antlers: false
+      display: Viewbox
+      type: text
+      icon: text
+      instructions: 'This must be the content of the viewbox (e.g "0 0 32 32")'
+      listable: hidden
+      instructions_position: above
+      validate:
+        - required
+        - null

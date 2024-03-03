@@ -1,0 +1,99 @@
+tabs:
+  contact_info:
+    display: 'Contact Information'
+    sections:
+      -
+        fields:
+          -
+            handle: company_name
+            field:
+              input_type: text
+              antlers: false
+              default: 'Lucy Macdonald Makeup Studio'
+              display: 'Company Name'
+              type: text
+              icon: text
+              instructions: 'Enter company name here'
+              listable: hidden
+              instructions_position: above
+              validate:
+                - required
+          -
+            handle: company_number
+            field:
+              input_type: text
+              antlers: false
+              display: 'Company Number'
+              type: text
+              icon: text
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+          -
+            handle: address
+            field:
+              mode: keyed
+              keys:
+                line1: 'Unit/Room/Flat number and/or Building Name'
+                line2: 'Street Number and Street Name'
+                city: 'Town or City'
+                county: 'Borough, County, or Province'
+                postcode: Postcode
+                googlemaps: 'Google Maps URL'
+              display: Address
+              type: array
+              icon: array
+              listable: hidden
+              instructions_position: above
+              validate:
+                - required
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: email
+            field:
+              placeholder: enquires@companyname.com
+              input_type: text
+              antlers: false
+              display: Email
+              type: text
+              icon: text
+              instructions: 'Enter general enquires email here'
+              listable: hidden
+              instructions_position: above
+              validate:
+                - required
+                - email
+          -
+            handle: phone
+            field:
+              placeholder: '1234567890'
+              input_type: text
+              character_limit: 10
+              prepend: '0044'
+              antlers: false
+              display: Phone
+              type: text
+              icon: text
+              instructions: 'Enter company UK phone number (omitting the initial 0)'
+              listable: hidden
+              instructions_position: above
+              validate:
+                - required
+                - integer
+                - 'digits:10'
+  socials:
+    display: Socials
+    sections:
+      -
+        display: 'Social Links'
+        fields:
+          -
+            import: component_socials
+      -
+        display: 'Social Icons'
+        instructions: 'This controls the icons globally so where ever they are required they will use these assets. Make sure this is an **.svg** that is appropriately formatted.'
+        fields:
+          -
+            import: component_social_icons

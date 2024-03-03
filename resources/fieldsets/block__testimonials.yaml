@@ -1,0 +1,59 @@
+title: 'Block - Testimonials'
+fields:
+  -
+    handle: select_testimonials_by
+    field:
+      options:
+        all: All
+        entries: Entries
+        tags: Tags
+      multiple: false
+      max_items: 1
+      clearable: false
+      searchable: true
+      taggable: false
+      push_tags: false
+      cast_booleans: false
+      default: all
+      display: 'Select Testimonials by:'
+      type: select
+      icon: select
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      validate:
+        - required
+  -
+    handle: entries
+    field:
+      mode: default
+      create: true
+      collections:
+        - testimonials
+      display: Entries
+      type: entries
+      icon: entries
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      validate:
+        - sometimes
+      if:
+        select_testimonials_by: 'equals entries'
+  -
+    handle: tags
+    field:
+      mode: default
+      create: true
+      taxonomies:
+        - tags
+      display: Tags
+      type: terms
+      icon: taxonomy
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      validate:
+        - sometimes
+      if:
+        select_testimonials_by: 'equals tags'

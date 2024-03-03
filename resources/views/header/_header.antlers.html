@@ -1,0 +1,14 @@
+<!-- /header/_header.antlers.html -->
+<header class="w-full">
+    {{ partial:header/main }}
+</header>
+{{# Navbar #}}
+{{ yield:navbar_script }}
+{{# Mobile Menu Scripts #}}
+{{ yield:mobile_menu_script }}
+{{ yield:mobile_parent_script }}
+{{ yield:mobile_child_script }}
+{{# Desktop Menu Scripts #}}
+{{ yield:desktop_parent_script }}
+{{ yield:desktop_child_script }}
+<!-- End: /header/_header.antlers.html -->

@@ -1,0 +1,11 @@
+title: Branding
+data:
+  square_logo: logos/tdmac-_logo.svg
+  rectangular_logo: logos/tdmac_label-logo.svg
+  favicon: logos/tdmac_favicon.png
+  neutral_dark: '#111618'
+  neutral_light: '#F2F7F7'
+  primary: '#3D8074'
+  accent: '#96acb7'
+  hero_default: stock-imgs/digital-ocean.jpg
+  team_cover_default: stock-imgs/digital-ocean.jpg

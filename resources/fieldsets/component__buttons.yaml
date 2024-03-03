@@ -1,0 +1,20 @@
+title: 'Component - Buttons'
+fields:
+  -
+    handle: buttons
+    field:
+      collapse: false
+      previews: true
+      max_sets: 2
+      sets:
+        button:
+          display: Button
+          fields:
+            -
+              import: component__button
+      display: Buttons
+      type: replicator
+      icon: replicator
+      listable: hidden
+      instructions_position: above
+      visibility: visible

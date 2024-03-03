@@ -1,0 +1,73 @@
+<!-- /header/desktop/_desktop_main.antlers.html -->
+<div class="nav-bar-shadow fixed top-0 z-30 w-screen h-[64px]"></div>
+<div class="nav-bar fixed top-0 w-full flex flex-row items-center justify-between px-standard pt-[env(safe-area-inset-top)] gap-4 md:gap-6 lg:gap-8 xl:gap-12 transition min-h-[4rem] z-50">
+
+    {{# Logo #}}
+    <div class="">
+        {{partial:components/logo type="rectangular" class="w-full max-h-[2rem] drop-shadow-xl shadow-primary"}}
+        <p class="sr-only">{{company:company_name}}</p>
+    </div>
+    {{# Desktop Navigation #}}
+    <nav class="hidden lg:block">
+        <ul id="desktopMenu" class="flex flex-row gap-8">
+            {{ partial:header/desktop/desktop_parent }}
+        </ul>
+    </nav>
+    {{# Mobile menu button #}}
+    <button id="toggleMobileMenuButton" class="lg:hidden max-h-[2rem] p-1 text-neutralLight transform motion-safe:transition">
+        <span class="sr-only">Open Mobile Menu</span>
+        <div class="relative pointer-events-none">
+            {{# Dynamic Top #}}
+            <svg class="indicator-1 absolute h-6 w-6 text-inherit transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -mt-1.5 {{# rotate-45 #}} motion-safe:transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+            </svg>
+            {{# Dynamic Middle #}}
+            <svg class="indicator-2 relative h-6 w-6 text-inherit {{# opacity-0 #}} motion-safe:transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+            </svg>
+            {{# Dynamic Bottom #}}
+            <svg class="indicator-3 absolute h-6 w-6 text-inherit transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-1.5 {{# -rotate-45 #}} motion-safe:transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+            </svg>
+        </div>
+    </button>
+</div>
+{{# Toggle BG On Scroll Script #}}
+{{ section:navbar_script }}
+<script>
+    //Wait until DOM loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        //Background colour change on scroll
+        function isInViewport(element) {
+            const marginTop = parseInt(getComputedStyle(element).marginTop);
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= marginTop
+            );
+        };
+
+        const heroElement = document.querySelector('.hero');
+        const navElement = document.querySelector('.nav-bar');
+        const navShadow = document.querySelector('.nav-bar-shadow');
+        if(heroElement) {
+            if( isInViewport(heroElement) ) {
+                navElement.classList.remove('bg-primary');
+                navShadow.classList.remove('shadow-md');
+            } else {
+                navElement.classList.add('bg-primary');
+                navShadow.classList.add('shadow-md');
+            };
+            document.addEventListener('scroll', function() {
+                if(isInViewport(heroElement) == true) {
+                    navElement.classList.remove('bg-primary');
+                    navShadow.classList.remove('shadow-md');
+                } else {
+                    navElement.classList.add('bg-primary');
+                    navShadow.classList.add('shadow-md');
+                };
+            });
+        };
+    });
+</script>
+{{ /section:navbar_script }}
+<!-- End: /header/desktop/_desktop_main.antlers.html -->

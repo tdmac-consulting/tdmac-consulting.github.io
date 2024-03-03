@@ -1,0 +1,68 @@
+{{ section:button_classes }}
+    flex place-content-center
+    w-full xs:max-w-min
+    px-3 py-2
+    border-2 rounded-md
+    {{ if style == 'dark' }}
+    text-neutralLight
+    bg-neutralDark
+    border-accent
+    hover:text-accent
+    focus:outline-none focus:ring-2 focus:ring-accent
+    {{ else }}
+    text-neutralDark
+    bg-neutralLight
+    border-primary
+    hover:text-primary
+    focus:outline-none focus:ring-2 focus:ring-primary
+    {{ /if }}
+    {{ class }}
+{{ /section:button_classes }}
+<!-- resources/views/components/_button.antlers.html -->
+{{ if
+    ( type == 'button' )
+    ||
+    ( type == 'submit' )
+}}
+<button
+    type="{{ type }}"
+    class="{{yield:button_classes }}"
+>
+{{ elseif type == "faux" }}
+<div class="{{yield:button_classes }}">
+{{ else }}
+<a
+    href="{{ button_link }}"
+    class="{{yield:button_classes }}"
+    {{ unless
+       ( !button_link )
+       ||
+       ( button_link|starts_with:"/" )
+       ||
+       ( button_link|starts_with:"#" )
+       ||
+       ( button_link|starts_with:"mailto:" )
+       ||
+       ( button_link|starts_with:"tel:" )
+       ||
+       ( button_link|contains:{site.permabutton_link} )
+    }}
+    target="_blank" rel="noreferrer"
+    {{ /if }}
+>
+{{ /if }}
+    <span class="block font-semibold text-xl xs:whitespace-nowrap">{{ button_text }}</span>
+{{ if
+    (type == 'button' )
+    ||
+    (type == 'submit' )
+}}
+</button>
+{{ elseif type == "faux" }}
+</div>
+{{ else }}
+</a>
+{{ /if }}
+
+
+<!-- End: resources/views/components/_button.antlers.html -->

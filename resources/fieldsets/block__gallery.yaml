@@ -1,0 +1,72 @@
+title: 'Block - Gallery'
+fields:
+  -
+    handle: heading
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: Heading
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: select_media_by
+    field:
+      options:
+        all: All
+        tags: Tags
+        assets: 'Asset Selection'
+      multiple: false
+      max_items: 1
+      clearable: false
+      searchable: true
+      taggable: false
+      push_tags: false
+      cast_booleans: false
+      default: all
+      display: 'Select Media by:'
+      type: select
+      icon: select
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: assets
+    field:
+      mode: list
+      container: assets
+      folder: media
+      restrict: true
+      allow_uploads: true
+      show_filename: true
+      display: Assets
+      type: assets
+      icon: assets
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      validate:
+        - sometimes
+      if:
+        select_media_by: 'equals assets'
+  -
+    handle: tags
+    field:
+      mode: typeahead
+      create: true
+      taxonomies:
+        - tags
+      display: Tags
+      type: terms
+      icon: taxonomy
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      validate:
+        - sometimes
+      if:
+        select_media_by: 'equals tags'

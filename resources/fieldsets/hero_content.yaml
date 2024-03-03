@@ -1,0 +1,60 @@
+title: 'Hero Content'
+fields:
+  -
+    handle: hero_heading
+    field:
+      input_type: text
+      antlers: false
+      display: 'Hero Heading'
+      type: text
+      instructions: 'This is if you want content that differs from the page name'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: hero_subheading
+    field:
+      input_type: text
+      antlers: false
+      display: 'Hero Subheading'
+      type: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: hero_content
+    field:
+      antlers: false
+      display: 'Hero Content'
+      type: textarea
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: hero_image
+    field:
+      mode: list
+      container: assets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      display: 'Hero Image'
+      type: assets
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      validate:
+        - required
+      folder: media
+      max_files: 1
+  -
+    handle: show_contact_form
+    field:
+      default: false
+      type: toggle
+      display: 'Show Contact Form'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

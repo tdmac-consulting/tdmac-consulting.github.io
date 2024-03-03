@@ -1,0 +1,23 @@
+title: 'Component - FAQ'
+fields:
+  -
+    handle: question
+    field:
+      input_type: text
+      antlers: false
+      display: Question
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: answer
+    field:
+      antlers: false
+      display: Answer
+      type: textarea
+      icon: textarea
+      listable: hidden
+      instructions_position: above
+      visibility: visible

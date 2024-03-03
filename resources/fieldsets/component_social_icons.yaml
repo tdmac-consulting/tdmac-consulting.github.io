@@ -1,0 +1,61 @@
+title: 'Component - Social Icons'
+fields:
+  -
+    handle: icons
+    field:
+      collapse: false
+      previews: true
+      fullscreen: true
+      sets:
+        new_set_group:
+          display: 'New Set Group'
+          instructions: null
+          icon: null
+          sets:
+            icon:
+              display: Icon
+              instructions: 'Make sure this is an **.svg** that is appropriately formatted.'
+              icon: social-share
+              fields:
+                -
+                  handle: social_network
+                  field:
+                    input_type: text
+                    antlers: false
+                    type: text
+                    display: 'Social Network'
+                    icon: text
+                    width: 50
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                -
+                  handle: icon_asset
+                  field:
+                    max_files: 1
+                    mode: list
+                    container: assets
+                    folder: svgs
+                    restrict: true
+                    allow_uploads: true
+                    show_filename: true
+                    show_set_alt: true
+                    type: assets
+                    display: Icon
+                    icon: assets
+                    width: 50
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+      type: replicator
+      display: Icons
+      icon: replicator
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

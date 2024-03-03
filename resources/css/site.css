@@ -1,0 +1,106 @@
+/* If you don't want to use the JS in CSS syntax from `tailwind.config.site.js` you can add your own custom CSS here. Use different layers to make sure your CSS either get's purged or not: https://tailwindcss.com/docs/functions-and-directives#layer. CSS in the base layer won't get purged. */
+
+@layer base {
+    /* Headings */
+    @import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@0,100..900;1,100..900&display=swap');
+    /* Body */
+    @import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+}
+
+@layer components {
+
+}
+
+@layer utilities {
+
+}
+
+/* Body Base Styling */
+body {
+    @apply font-saira;
+}
+p {
+    @apply text-sm;
+    @apply xs:text-base;
+}
+
+/* ----- Formatted Content ----- */
+/* Header Content */
+.formatted-content h1, h2, h3, h4, h5, h6 {
+    @apply font-genos;
+    @apply font-bold;
+    
+}
+.formatted-content h1 {
+    @apply font-black;
+    @apply text-4xl;
+    @apply xs:text-5xl;
+    @apply md:text-6xl;
+    @apply uppercase;
+}
+.formatted-content h2 {
+    @apply text-3xl;
+    @apply xs:text-4xl;
+    @apply md:text-5xl;
+}
+.formatted-content h3 {
+    @apply text-2xl;
+    @apply xs:text-3xl;
+    @apply md:text-4xl;
+}
+.formatted-content h4 {
+    @apply text-xl;
+    @apply xs:text-2xl;
+    @apply md:text-3xl;
+}
+.formatted-content h5 {
+    @apply text-lg;
+    @apply xs:text-xl;
+    @apply md:text-2xl;
+}
+.formatted-content h6 {
+    @apply text-base;
+    @apply xs:text-lg;
+    @apply md:text-xl;
+}
+
+/* Standard Content */
+.formatted-content p {
+    @apply text-sm;
+    @apply xs:text-base;
+    @apply xl:text-lg;
+}
+/* Lead Paragraph */
+.formatted-content .lead {
+    @apply leading-loose;
+    @apply text-base;
+    @apply xs:text-lg;
+    @apply md:text-xl;
+}
+/* Links */
+.formatted-content a {
+    @apply underline;
+    /* @apply hover:text-accent; */
+    @apply focus-visible:no-underline;
+    @apply focus-visible:outline-none;
+    @apply focus-visible:ring;
+    @apply focus-visible:ring-primary;
+    @apply focus-visible:ring-offset-2;
+    @apply focus-visible:rounded-sm;
+}
+/* Unordered List */
+.formatted-content ul li {
+    @apply list-disc;
+    @apply ml-5;
+}
+.formatted-content ul li p{
+    @apply inline;
+}
+/* Order List */
+.formatted-content ol li {
+    @apply list-decimal;
+    @apply ml-5;
+}
+.formatted-content ol li p{
+    @apply inline;
+}

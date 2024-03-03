@@ -1,0 +1,103 @@
+title: FAQ
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: Question
+              instructions_position: above
+              listable: true
+              visibility: visible
+              input_type: text
+              antlers: false
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: answer
+            field:
+              buttons:
+                - h4
+                - bold
+                - italic
+                - unorderedlist
+                - orderedlist
+                - removeformat
+                - anchor
+              smart_typography: false
+              save_html: false
+              inline: false
+              toolbar_mode: fixed
+              reading_time: true
+              word_count: true
+              fullscreen: true
+              allow_source: true
+              enable_input_rules: true
+              enable_paste_rules: true
+              remove_empty_nodes: trim
+              antlers: false
+              link_noopener: false
+              link_noreferrer: false
+              target_blank: false
+              sets:
+                components:
+                  display: Components
+                  instructions: null
+                  icon: addon-boxes-stack
+                  sets:
+                    table:
+                      display: Table
+                      instructions: null
+                      icon: layout-grid-dots
+                      fields:
+                        -
+                          import: component__table
+                    buttons:
+                      display: Buttons
+                      instructions: null
+                      icon: link
+                      fields:
+                        -
+                          import: component__buttons
+              always_show_set_button: false
+              collapse: false
+              previews: true
+              type: bard
+              display: Answer
+              icon: bard
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              container: assets
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+          -
+            handle: tags
+            field:
+              mode: typeahead
+              create: true
+              taxonomies:
+                - tags
+              display: Tags
+              type: terms
+              icon: taxonomy
+              listable: hidden
+              instructions_position: above
+              visibility: visible

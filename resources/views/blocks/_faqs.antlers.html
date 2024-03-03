@@ -1,0 +1,81 @@
+{{ if select_faqs_by == 'all' }}
+ {{ faqs = { collection:faqs } }}
+ {{ elseif select_faqs_by == 'tags' }}
+ {{ tag_title = tag.title }}
+ {{ faqs = { collection:faqs :tags:contains="tag_title" } }}
+ {{ elseif select_faqs_by == 'entries' }}
+ {{ faqs = entries }}
+{{ /if }}
+<!-- /blocks/_faqs.antlers.html -->
+<section class="faqs">
+    <div class="flex flex-col gap-y-6 w-full container max-w-5xl mx-auto px-standard">
+        {{ if heading }}
+        <h2 class="text-sm xs:text-2xl md:text-3xl lg:text-4xl uppercase tracking-ultrawide text-center">
+            {{ heading }}
+        </h2>
+        {{ /if }}
+        <dl class="faq-list flex flex-col justify-center items-center w-full gap-y-8">
+            {{ faqs }}
+            <div class="faq-entry w-full border-2 border-neutralDark focus-within:border-primary">
+                {{# Question #}}
+                <dt class="question w-full">
+                    <button type="button" class="button flex flex-row items-center justify-between w-full gap-x-8 p-6 hover:text-primary focus:outline-none">
+                        {{# Question Content #}}
+                        <h3 class="block font-light text-lg xs:text-xl md:text-3xl lg:text-3xl uppercase tracking-wide text-center">
+                            {{ title }}
+                        </h3>
+                        {{# Icon #}}
+                        <div class="relative pointer-events-none text-inherit">
+                            {{# Static #}}
+                            <svg class="relative h-6 w-6 text-inherit" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                            </svg>
+                            {{# Dynamic #}}
+                            <svg class="indicator absolute inset-0 h-6 w-6 text-inherit rotate-90 transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                            </svg>
+                        </div>
+                    </button>
+                </dt>
+                {{# Answer #}}
+                <dd class="answer hidden p-6 pt-0">
+                    {{ partial:components/bard_content :content="answer" class="" }}
+                </dd>
+            </div>
+            {{ /faqs }}
+        </dl>
+    </div>
+</section>
+{{ section:faq_script }}
+<script>
+    // Wait for DOM content to load
+    document.addEventListener('DOMContentLoaded', ()=>{
+        // Select all relative FAQ sections
+        document.querySelectorAll('section.faqs').forEach(section => {
+            //Select all FAQ entries in a section
+            section.querySelectorAll('.faq-entry').forEach(entry => {
+                // Select button
+                const button = entry.querySelector('dt button.button');
+                // Select indicator
+                const indicator = button.querySelector('.indicator');
+                // Select Answer
+                const answer = entry.querySelector('dd.answer');
+
+                // Define Toggle Function
+                function toggleFaq(e) {
+                    // Toggle indicator
+                    indicator.classList.toggle('rotate-90');
+                    // Toggle answer visiblitiy
+                    answer.classList.toggle('hidden');
+                    answer.classList.toggle('block');
+                };
+                
+                // Add a listener to the button
+                button.addEventListener('click', toggleFaq);
+            })
+
+        })
+    })
+</script>
+{{ /section:faq_script }}
+<!-- End: /blocks/_faqs.antlers.html -->

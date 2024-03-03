@@ -1,0 +1,61 @@
+title: Company
+data:
+  company_name: 'T.D.Mac Consulting'
+  address:
+    line1: 'T.D.Mac Consulting'
+    line2: '9 Dingley Terrace'
+    city: 'Market Harborough'
+    county: Leicestershire
+    postcode: 'LE16 7NQ'
+    googlemaps: 'https://maps.app.goo.gl/RkxSL4Bf1JLcU4tL6'
+    'Address Line 1': 'Lucy Macdonald Makeup Studio, The Manor'
+    'Address Line 2': 'Main Street'
+    Town/City: 'Tur Langton'
+    Borough/County: Leicestershire
+    Postcode: 'LE8 0PJ'
+  email: thomas.david.macdonald@gmail.com
+  phone: '7807951276'
+  socials:
+    -
+      id: loc2n6jw
+      type: email
+      enabled: true
+      email: thomas.david.macdonald@gmail.com
+      prefix: 'mailto:'
+    -
+      id: ltbw9l7d
+      prefix: 'tel:'
+      phone_number: '07807951276'
+      type: phone
+      enabled: true
+  icons:
+    -
+      id: loc2nd0p
+      social_network: Email
+      type: icon
+      enabled: true
+      icon_asset: svgs/email.svg
+    -
+      id: lobvtbm7
+      social_network: Facebook
+      icon_asset: svgs/facebook--icon.svg
+      type: icon
+      enabled: true
+    -
+      id: lobvtnw8
+      social_network: Instagram
+      icon_asset: svgs/instagram--icon.svg
+      type: icon
+      enabled: true
+    -
+      id: lobw0slw
+      social_network: Twitter
+      icon_asset: svgs/x_logo.svg
+      type: icon
+      enabled: true
+    -
+      id: lrmj7syc
+      social_network: Phone
+      icon_asset: svgs/phone.svg
+      type: icon
+      enabled: true

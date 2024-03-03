@@ -1,0 +1,14 @@
+title: 'Block - Contact Form'
+fields:
+  -
+    handle: heading
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: Heading
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

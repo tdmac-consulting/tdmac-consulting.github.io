@@ -1,0 +1,8 @@
+{{ children }}
+{{ if visibility }}
+<li class="grandchild">
+    {{# Link #}}
+    <a href="{{url}}" class="p-2.5 -m-2.5 align-middle whitespace-nowrap font-semibold text-lg text-neutralLight hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">{{title}}</a>
+</li>
+{{ /if }}
+{{ /children }}

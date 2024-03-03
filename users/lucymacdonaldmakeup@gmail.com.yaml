@@ -1,0 +1,10 @@
+name: 'Lucy Macdonald'
+super: true
+id: f816502b-4c5d-4019-9eca-19285c474e51
+password_hash: $2y$10$LKgqscH7wB7KkAH26/7uNuhWOk7Wu6.qxir.ZXVKoTtckrs.aV7..
+preferences:
+  collections:
+    pages:
+      after_save: continue_editing
+    team:
+      after_save: continue_editing

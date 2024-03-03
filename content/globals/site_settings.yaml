@@ -1,0 +1,25 @@
+title: 'Site Configuration'
+data:
+  disable_telephone_detection: false
+  disable_email_detection: false
+  disable_address_detection: false
+  apple_mobile_web_app: false
+  android_mobile_web_app: false
+  error_404_page:
+    - e5658266-34ca-4571-adc0-d3642aeec056
+  title_separator: '|'
+  noindex_local: true
+  noindex_staging: true
+  noindex_production: true
+  hreflang_auto: false
+  json_ld_type: none
+  breadcrumbs: false
+  sitemap_collections:
+    - pages
+  trackers_local: false
+  trackers_staging: false
+  trackers_production: true
+  use_google_site_verification: false
+  use_fathom: false
+  use_cloudflare_web_analytics: false
+  tracker_type: none

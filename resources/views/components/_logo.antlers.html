@@ -1,0 +1,11 @@
+<!-- /components/_logo.antlers.html -->
+{{ if type == 'square' }}
+<a href="/" class="block h-full p-2.5 -m-2.5 rounded-md text-neutralLight hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+    {{partial:components/media :media="branding:square_logo" class="w-full h-full {{class}}" :alt="company:name" }}
+</a>
+{{ else }}
+<a href="/" class="block h-full p-2.5 -m-2.5 rounded-md text-neutralLight hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+    {{partial:components/media :media="branding:rectangular_logo" class="w-full h-full {{class}}" :alt="company:name" }}
+</a>
+{{ /if }}
+<!-- End: /components/_logo.antlers.html -->

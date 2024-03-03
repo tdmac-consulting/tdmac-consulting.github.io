@@ -1,0 +1,5 @@
+{{ company:icons }}
+    {{ if socials_type|slugify|replace('-','') == social_network|slugify|replace('-','') }}
+        {{ partial:components/media :media="icon_asset"  class="{{class}}" }}
+    {{ /if }}
+{{ /company:icons }}

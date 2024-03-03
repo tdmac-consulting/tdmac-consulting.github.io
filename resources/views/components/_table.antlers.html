@@ -1,0 +1,41 @@
+<!-- /components/_table.antlers.html -->
+<figure class="table-component relative max-w-screen flex flex-col overflow-x-auto">
+    <div class="grid grid-cols-1">{{# This prevents it from breaking the page width #}}
+        <table class="bg-light border-collapse min-w-[580px]">
+            {{ table }}
+                {{ if first && top_line_header }}
+                    <thead>
+                        <tr>
+                            {{ cells }}
+                                <th class="px-3 py-3 text-xs font-bold tracking-wider text-left text-neutralLight uppercase border-b xl:px-6 border-neutralLight bg-neutralDark/60">{{ value }}</th>
+                            {{ /cells }}
+                        </tr>
+                    </thead>
+                    <tbody>
+                {{ /if }}
+
+                {{ if !first && top_line_header || !top_line_header }}
+                    {{ if first }}
+                        <tbody>
+                    {{ /if }}
+
+                    <tr>
+                        {{ cells }}
+                            {{ if first && first_col_header }}
+                                <th class="px-3 py-3 text-xs font-bold tracking-wider text-left text-neutralLight uppercase border-b xl:px-6 border-neutralLight bg-neutralDark/60">{{ value }}</th>
+                            {{ else }}
+                                <td class="px-3 py-3 text-sm border-b xl:px-6 border-neutralDark/60 ">{{ value }}</td>
+                            {{ /if }}
+                        {{ /cells }}
+                    </tr>
+
+                    {{ if last }}
+                        </tbody>
+                    {{ /if }}
+                {{ /if }}
+            {{ /table }}
+        </table>
+    </div>
+    {{ partial:components/caption :caption="caption ?? media.alt" size='sm' }}
+</figure>
+<!-- End: /components/_table.antlers.html -->

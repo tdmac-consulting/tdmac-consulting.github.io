@@ -1,0 +1,174 @@
+tabs:
+  logos:
+    display: Logos
+    sections:
+      -
+        fields:
+          -
+            handle: square_logo
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              restrict: true
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Emblem Logo'
+              icon: assets
+              instructions: 'This is your small logo. This is only used on mobile views generally where space is limited. Make sure this is saved as a **.svg** for scaleability and load time performance.'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              folder: logos
+          -
+            handle: rectangular_logo
+            field:
+              mode: list
+              container: assets
+              restrict: true
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Label Logo'
+              icon: assets
+              instructions: 'This is your big logo. Make sure this is saved as a **.svg** for scaleability and load time performance.'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              folder: logos
+              max_files: 1
+          -
+            handle: favicon
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              restrict: true
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: Favicon
+              icon: assets
+              instructions: 'This is the little guy at the top on the tab. He needs to be **180px by 180px** and in a **.png** format.'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              folder: logos
+  colours:
+    display: Colours
+    sections:
+      -
+        fields:
+          -
+            handle: neutral_dark
+            field:
+              allow_any: true
+              default: '#000'
+              type: color
+              display: 'Neutral Dark'
+              icon: color
+              instructions: 'This is your text colour. Make sure there is [sufficient contrast](https://colourcontrast.cc/) with your **Neutral Light** colour for readability. **Remember contrast ratios affect your SEO score.**'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: neutral_light
+            field:
+              allow_any: true
+              default: '#fff'
+              type: color
+              display: 'Neutral Light'
+              icon: color
+              instructions: 'This is your background colour. Make sure there is [sufficient contrast](https://colourcontrast.cc/) with your **Neutral Dark** colour for readability. **Remember contrast ratios affect your SEO score.**'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: primary
+            field:
+              allow_any: true
+              type: color
+              display: Primary
+              icon: color
+              instructions: 'This is used as your main pop colour. Make sure there is [sufficient contrast](https://colourcontrast.cc/) with your **Neutral Light** colour for readability. **Remember contrast ratios affect your SEO score.**'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              default: '#333333'
+          -
+            handle: accent
+            field:
+              allow_any: true
+              type: color
+              display: Accent
+              icon: color
+              instructions: 'This is used as your secondary pop colour. Make sure there is [sufficient contrast](https://colourcontrast.cc/) with your **Neutral Dark** colour for readability. **Remember contrast ratios affect your SEO score.**'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              default: '#cccccc'
+  default_images:
+    display: 'Default Images'
+    sections:
+      -
+        display: Hero
+        fields:
+          -
+            handle: hero_default
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              folder: stock-imgs
+              restrict: true
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Hero Image'
+              icon: assets
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+      -
+        display: 'Team Cover'
+        fields:
+          -
+            handle: team_cover_default
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              folder: stock-imgs
+              restrict: true
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Team Cover Image'
+              icon: assets
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false

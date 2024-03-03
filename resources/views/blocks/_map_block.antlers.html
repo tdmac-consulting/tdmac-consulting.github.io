@@ -1,0 +1,107 @@
+<section class="map-block">
+    <div class="relative w-full">
+        {{# Content #}}
+        <div class="relative flex flex-col md:flex-row container mx-auto rounded-md overflow-hidden">
+            {{# Background #}}
+            <div class="absolute inset-0  w-full h-full object-cover bg-primary/30">
+                {{partial:components/media :media="background_image" cover="true" lazy="true" class="opacity-70"}}
+            </div>
+            {{# Gradient overlay #}}
+            <div class="absolute w-full h-full object-cover bg-primary/30">
+            </div>
+            {{# Contact Details #}}
+            <div class="relative flex flex-col gap-6 justify-center px-3 py-6 md:px-6">
+                {{# Heading #}}
+                {{ if heading }}
+                <h2 class="relative lg:whitespace-nowrap text-center md:text-left uppercase font-semibold text-neutralLight drop-shadow-xl shadow-primary text-xl xs:text-2xl md:text-3xl lg:text-4xl">{{ heading }}</h2>
+                {{ /if }}
+                {{# Content #}}
+                {{ if content }}
+                <p class="text-center md:text-left max-w-prose mx-auto lg:max-w-[390px] text-neutralLight drop-shadow-xl shadow-primary">{{ content }}</p>
+                {{ /if }}
+                {{# Contact List #}}
+                <dl class="flex flex-col gap-6 justify-center w-min mx-auto md:w-full">
+                    {{# Address #}}
+                    <dt class="sr-only">Address</dt>
+                    <dd class="relative">
+                        <a
+                            href="{{company:address:googlemaps}}"
+                            target="_blank"
+                            aria-label="See address in Google Maps in a new tab"
+                            class="
+                                flex flex-row items-center gap-4
+                                text-neutralLight drop-shadow-xl shadow-primary 
+                                hover:text-accent
+                                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent
+                            "
+                        >
+                        {{# SVG #}}
+                        <div class="h-8 w-8">
+                        <svg class="h-full w-full stroke-2 text-inherit pointer-events-none drop-shadow-[0_35px_35px_rgba(255,255,255,0.25)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M25.1926 23.1633L18.2977 30.0492C17.9962 30.3506 17.6382 30.5897 17.244 30.7529C16.8499 30.916 16.4275 31 16.0008 31C15.5742 31 15.1517 30.916 14.7576 30.7529C14.3635 30.5897 14.0054 30.3506 13.7039 30.0492L6.80738 23.1633C4.98936 21.3475 3.7513 19.0341 3.24975 16.5157C2.74819 13.9972 3.00568 11.3868 3.98964 9.01451C4.97359 6.6422 6.63984 4.61456 8.77766 3.188C10.9155 1.76143 13.4289 1 16 1C18.5711 1 21.0845 1.76143 23.2223 3.188C25.3602 4.61456 27.0264 6.6422 28.0104 9.01451C28.9943 11.3868 29.2518 13.9972 28.7503 16.5157C28.2487 19.0341 27.0106 21.3475 25.1926 23.1633Z"/>
+                            <path d="M22 14C22 15.5913 21.3679 17.1174 20.2426 18.2426C19.1174 19.3679 17.5913 20 16 20C14.4087 20 12.8826 19.3679 11.7574 18.2426C10.6321 17.1174 10 15.5913 10 14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14Z"/>
+                        </svg>
+                        </div>
+                        {{# Address #}}
+                        <address class="not-italic inline-block text-left text-sm md:text-base hover:font-medium drop-shadow-[0_35px_35px_rgba(255,255,255,0.25)]">{{company:address:line1}}<br>{{company:address:line2}}<br>{{company:address:city}}<br>{{company:address:postcode}}</address>
+                        </a>
+                    </dd>
+                    {{# Socials #}}
+                        {{ company:socials }}
+                        <dt class="sr-only"><span>{{ type|replace('_',' ')|replace('-',' ') }}</span></dt>
+                        <dd>
+                            <a
+                            {{ if type == "email" }}
+                                href="mailto:{{ email ?? company:email}}"
+                            {{ else }}
+                                href="{{ prefix }}{{ social_handle }}" target="_blank"
+                            {{ /if }}
+                                class="
+                                    flex flex-row items-center gap-4
+                                    text-neutralLight drop-shadow-xl shadow-primary 
+                                    hover:text-accent
+                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent
+                                "
+                            >
+                                {{# Icon #}}
+                                {{ partial:snippets/social_icon :socials_type="type" class="h-8 w-8 stroke-2 text-inherit pointer-events-none text-neutralLight drop-shadow-xl shadow-primary " }}
+                                {{# Label #}}
+                                <p class=" text-neutralLight drop-shadow-xl shadow-primary ">
+                                {{ if type == "email" }}
+                                    {{ email ?? company:email }}
+                                {{ elseif type == "phone" }}
+                                    +44{{ phone ?? company:phone }}
+                                {{ else }}
+                                    {{  social_handle | replace('/', '') }}
+                                {{ /if }}
+                                </p>
+                            </a>
+                        </dd>
+                    {{ /company:socials }}
+                </dl>
+            </div>
+            {{# Map #}}
+            <div class="relative h-[60vh] w-screen min-h-full max-h-full md:max-w-[80%] -mb-px -mr-px p-8">
+                <div class="rounded-md overflow-hidden w-full h-full">
+                    {{map_embed}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ section:map_script }}
+<script>
+    // Wait until DOM loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        // Select all map blocks, for each block
+        document.querySelectorAll('.map-block').forEach(block => {
+            // Select map
+            const map = block.querySelector('iframe');
+            // Update Height
+            map.setAttribute('height', '100%');
+            // Update Width
+            map.setAttribute('width', '100%');
+        })
+    })
+</script>
+{{ /section:map_script }}

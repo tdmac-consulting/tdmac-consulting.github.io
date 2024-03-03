@@ -1,0 +1,61 @@
+{{ children }}
+{{ if visibility }}
+<li class="{{ !children ?: 'child' }} relative p-2.5">
+    <div class="relative flex flex-row gap-2.5">
+        {{# Link #}}
+        <a href="{{url}}" class="p-2.5 -m-2.5 rounded-md align-middle xs:whitespace-nowrap font-semibold text-lg text-neutralLight hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">{{title}}</a>
+        {{if children}}
+        {{# Button #}}
+        <button type="button" class="button p-2.5 -m-2.5 rounded-md text-neutralLight hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+            {{# Accessibility Label #}}
+            <span class="sr-only">{{title}} Menu</span>
+            {{# Icon #}}
+            <div class="relative pointer-events-none text-inherit">
+                {{# Static #}}
+                <svg class="relative h-6 w-6 text-inherit" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                </svg>
+                {{# Dynamic #}}
+                <svg class="indicator absolute inset-0 h-6 w-6 text-inherit rotate-90 transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                </svg>
+            </div>
+        </button>
+        {{/if}}
+    </div>
+    {{if children}}
+    <ul class="menu hidden flex-col p-2.5 -mb-2.5">
+        {{partial:header/mobile/mobile_grandchild}}
+    </ul>
+    {{/if}}
+</li>
+{{ /if }}
+{{ /children }}
+{{ section:mobile_child_script }}
+<script >
+    // Wait until DOM Content Loaded
+    document.addEventListener("DOMContentLoaded", () => {
+        // Select Desktop Menu
+        const desktopMenu = document.querySelector('#mobileMenu');
+        // Select Parent Elements
+        const parents = desktopMenu.querySelectorAll('.child');
+        // For each parent
+        parents.forEach(parent => {
+            // Select Menu
+            const menu = parent.querySelector('*>.menu');
+            // Select Button
+            const button = parent.querySelector('*>button');
+            // Select Indicator
+            const indicator = button.querySelector('.indicator');
+            // Add toggle functionality
+            button.addEventListener('click', () => {
+                //Rotate Indicator
+                indicator.classList.toggle('rotate-90');
+                //Toggle Menu Visibility
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+            });
+        })
+    })
+</script>
+{{ /section:mobile_child_script }}

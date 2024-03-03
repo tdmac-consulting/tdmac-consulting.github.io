@@ -1,0 +1,6 @@
+<!-- /components/_image.antlers.html -->
+<figure class="image overflow-hidden">
+    {{ partial:components/media :media="media" lazy="true" cover="true" class="max-h-[calc((9/16)*65ch)]"}}
+    {{ partial:components/caption :caption="caption ?? media.alt" size='sm' }}
+</figure>
+<!-- End: /components/_image.antlers.html -->

@@ -1,0 +1,24 @@
+<!-- resources/views/components/_team_card.antlers.html -->
+<li class="">
+    <a href="{{ url }}" class="flex flex-col justify-between w-full h-full p-6 gap-4 border-2 border-neutralDark">
+        {{# Image #}}
+        <div class="aspect-square overflow-hidden">
+            {{ partial:components/media :media="profile_photo" cover="true" lazy="true" }}
+        </div>
+        <div class="flex flex-col gap-4 text-left">
+            {{# Name #}}
+            <h1 class="text-lg xs:text-xl uppercase tracking-ultrawide">
+                {{title}}
+            </h1>
+            {{# Business Name #}}
+            <h2 class="font-light text-base xs:text-lg uppercase tracking-ultrawide">
+                {{business_name}}
+            </h2>
+            <p>
+                {{ bio | strip_tags | truncate:180 }}
+            </p>
+        </div>
+        {{ partial:components/button type="faux" button_text="Book Now" class="" }}
+    </a>
+</li>
+<!-- End: resources/views/components/_team_card.antlers.html -->

@@ -1,0 +1,13 @@
+{{ if caption }}
+<!-- /components/_caption.antlers.html -->
+<figcaption
+    class="
+        caption text-right font-light
+        {{if size == "sm"}}text-xs xs:text-sm md:text-base lg:text-lg xl:text-xl{{ /if }}
+        {{if size == "lg"}}text-sm xs:text-base md:text-lg lg:text-xl xl:text-2xl{{ /if }}
+    "
+>
+    - {{ caption }}
+</figcaption>
+<!-- End: /components/_caption.antlers.html -->
+{{ /if }}

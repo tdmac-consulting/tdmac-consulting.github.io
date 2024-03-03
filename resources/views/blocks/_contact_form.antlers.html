@@ -1,0 +1,14 @@
+<!-- /blocks/_contact_form.antlers.html -->
+<section class="contact-form" id="id">
+    <div class="flex flex-col container mx-auto px-standard gap-6">
+        {{ if heading }}
+        <h2 class="text-sm xs:text-2xl md:text-3xl lg:text-4xl uppercase tracking-ultrawide text-center">
+            {{ heading }}
+        </h2>
+        {{ /if }}
+        <div class="max-w-prose mx-auto">
+        {{ partial:components/form form_handle="contact_form" id="id" }}
+        </div>
+    </div>
+</section>
+<!-- End: /blocks/_contact_form.antlers.html -->

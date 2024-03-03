@@ -1,0 +1,66 @@
+title: 'Block - Map Block'
+fields:
+  -
+    handle: heading
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: Heading
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: content
+    field:
+      antlers: false
+      type: textarea
+      display: Content
+      icon: textarea
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: map_embed
+    field:
+      theme: material
+      mode: htmlmixed
+      mode_selectable: false
+      indent_type: tabs
+      indent_size: 4
+      key_map: default
+      line_numbers: true
+      line_wrapping: true
+      antlers: false
+      type: code
+      display: 'Map Embed Code'
+      icon: code
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: background_image
+    field:
+      max_files: 1
+      mode: list
+      container: assets
+      folder: media
+      restrict: true
+      allow_uploads: true
+      show_filename: true
+      show_set_alt: true
+      type: assets
+      display: 'Background Image'
+      icon: assets
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

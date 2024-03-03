@@ -1,0 +1,129 @@
+tabs:
+  profile:
+    display: Profile
+    sections:
+      -
+        display: 'Basic Information'
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: 'Full Name'
+              instructions_position: above
+              listable: true
+              visibility: visible
+              replicator_preview: true
+              input_type: text
+              antlers: false
+              hide_display: false
+              width: 50
+          -
+            handle: business_name
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Business Name'
+              icon: text
+              width: 50
+              listable: true
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: profile_photo
+            field:
+              max_files: 1
+              mode: list
+              container: assets
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              show_set_alt: true
+              type: assets
+              display: 'Profile Photo'
+              icon: assets
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: bio
+            field:
+              container: assets
+              folder: media
+              restrict: true
+              buttons:
+                - bold
+              automatic_line_breaks: true
+              automatic_links: true
+              escape_markup: true
+              heading_anchors: false
+              smartypants: true
+              table_of_contents: false
+              antlers: false
+              type: markdown
+              display: Bio
+              icon: markdown
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+      -
+        display: 'Contact Details'
+        fields:
+          -
+            handle: booking_link
+            field:
+              type: link
+              display: 'Booking Link'
+              icon: link
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            import: component_socials
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: services
+            field:
+              mode: default
+              create: true
+              taxonomies:
+                - services
+              type: terms
+              display: Services
+              icon: taxonomy
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+  page_builder:
+    display: 'Page Builder'
+    sections:
+      -
+        display: 'Page Builder'
+        fields:
+          -
+            import: page_builder
+title: Team

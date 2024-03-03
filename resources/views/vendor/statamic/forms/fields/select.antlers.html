@@ -1,0 +1,31 @@
+<select
+    class="
+        w-full
+        rounded-md
+        border-2 border-primary
+        hover:border-accent
+        focus:outline-none focus:ring-2 focus:ring-primary
+        disabled:text-neutralDark/50
+        placeholder:text-neutralDark/50
+        {{class}}
+    "
+    name="{{ handle }}{{ multiple ?= "[]" }}"
+    {{ if js_driver }}{{ js_attributes }}{{ /if }}
+    {{ if multiple }}multiple{{ /if }}
+    {{ if validate|contains:required }}required{{ /if }}
+>
+    {{ unless multiple }}
+        <option value class="!text-neutralDark/50 disabled:text-neutralDark/50 placeholder:text-neutralDark/50">
+            {{ if placeholder }}
+                {{ placeholder }}
+            {{ else }}
+                Please select...
+            {{ /if }}
+        </option>
+    {{ /unless }}
+    {{ foreach:options as="option|label" }}
+        <option value="{{ option }}"{{ if multiple }}{{ if value|in_array:option }} selected{{ /if }}{{ else }}{{ if option == value }} selected{{ /if }}{{ /if }}>
+            {{ label !== null ? label : option }}
+        </option>
+    {{ /foreach:options }}
+</select>

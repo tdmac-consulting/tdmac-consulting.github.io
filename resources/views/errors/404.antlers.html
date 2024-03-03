@@ -1,0 +1,16 @@
+{{#
+	@name Error: 404
+	@desc The 404 error template.
+#}}
+
+{{# Redirect if current_url is in the Redirects global. #}}
+{{ redirects:redirects | where('url_old', {current_uri}) }}
+    {{ redirect to="{entry:url}" response="{response}" }}
+{{ /redirects:redirects }}
+
+<!-- /errors/404.antlers.html -->
+{{# Hero #}}
+{{ site_settings:error_404_page }}
+{{ partial:pages }}
+{{ /site_settings:error_404_page }}
+<!-- End: /errors/404.antlers.html -->

@@ -1,0 +1,28 @@
+<!-- /blocks/_hero_with_background_block.antlers.html -->
+<section class="hero-with-background hero relative flex flex-col w-full h-screen items-center justify-center bg-primary">
+    {{# Background #}}
+    <div class="absolute w-full h-full object-cover bg-primary/30">
+        {{partial:components/media :media="hero_image ?? branding:hero_default" cover="true" class="opacity-70"}}
+    </div>
+    {{# Gradient overlay #}}
+    <div class="absolute w-full h-full object-cover bg-primary/30">
+    </div>
+    {{# Content #}}
+    <div class="z-10 flex flex-col gap-6 items-center justify-center h-full w-full px-standard text-neutralLight">
+        <div class="">
+            <h2 class="text-xl xs:text-2xl md:text-4xl lg:text-5xl xl:text-6xl uppercase text-center font-black drop-shadow-xl shadow-primary">{{ hero_heading ?? title }}</h2>
+            {{ if hero_subheading}}
+            <h3 class="text-base xs:text-xl md:text-3xl lg:text-4xl xl:text-5xl text-center font-bold drop-shadow-xl shadow-primary">{{hero_subheading}}</h3>
+            {{/if}}
+            {{ if hero_content}}
+            <p class="max-w-prose mx-auto text-sm xs:text-sm md:text-base lg:text-lg xl:text-xl text-center mt-5 drop-shadow-xl shadow-primary">{{hero_content}}</p>
+            {{/if}}
+        </div>
+        {{ if show_contact_form }}
+        <div class="max-w-prose mx-auto">
+            {{ partial:components/form form_handle="contact_form" id="id" }}
+        </div>
+        {{ /if }}
+    </div>
+</section>
+<!-- End: /blocks/_hero_with_background_block.antlers.html -->

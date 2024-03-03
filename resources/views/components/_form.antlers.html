@@ -1,0 +1,54 @@
+{{# Form #}}
+{{form in="{{ form_handle }}" class="flex flex-col gap-4 {{class}}" }}
+<div class="form-success hidden bg-green-300 text-neutral p-3 rounded-md border border-transparent">Success! We'll be in touch!</div>
+<ul class="form-errors hidden flex-col gap-3 bg-red-300 text-neutral p-3 rounded-md border border-transparent"></ul>
+<div class="form-content flex flex-wrap -mx-1 gap-y-1">
+{{ fields }}
+{{ unless handle == "cf_turnstile_response" }}
+    <label
+        for="{{handle}}"
+        class="
+        {{ if visibility == "hidden" }}
+            sr-only
+        {{ else }}
+            relative  w-full
+                {{if width == 75}}lg:w-3/4
+            {{elseif width == 66}}md:w-2/3
+            {{elseif width == 50}}sm:w-1/2
+            {{elseif width == 33}}md:w-1/3
+            {{elseif width == 25}}lg:w-1/4{{/if}}
+        {{ /if }}
+        flex flex-col gap-1 p-1
+        "
+    >
+        <p
+            class="
+                font-light text-sm xs:text-base uppercase tracking-widest
+                {{ unless type == 'checkboxes' || type == 'radio' }}
+                sr-only
+                {{ /unless }}
+            "
+        > {{# Remove 'sr-only' if labels shown #}}
+            <span>{{display}}</span>
+            {{if validate | contains:required}}<sup class="text-red-500">*</sup>{{/if}}
+        </p>
+        <div class="w-full inline-flex items-center">
+            {{ if visibility == "hidden" }}
+            {{ partial:vendor/statamic/forms/fields/text :default_value="hidden_field_value" }}
+            {{ else}}
+            {{ field }}
+            {{ /if }}
+        </div>
+    </label>
+{{ /unless }}
+{{ /fields }}
+    {{# Honeypot #}}
+    <input type="text" class="hidden" name="{{ honeypot ?? 'honeypot' }}">
+    {{# Cloudflare #}}
+    <div class="cf-turnstile" data-sitekey="{{config:services:cloudflare:site_key}}" data-callback="javascriptCallback"></div>
+    {{# Submit #}}
+    <div class="flex flex-row items-center justify-end w-full p-1">
+        {{ partial:components/button button_text="Submit" type="submit" }}
+    </div>
+</div>
+{{/form}}

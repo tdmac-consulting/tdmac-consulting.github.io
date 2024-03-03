@@ -1,0 +1,18 @@
+<textarea
+    class="
+        w-full
+        rounded-md
+        border-2 border-primary
+        hover:border-accent
+        focus:outline-none focus:ring-2 focus:ring-primary
+        {{class}}
+    "
+    name="{{ handle }}"
+    rows="5"
+    {{ if placeholder }}placeholder="{{ placeholder }}"{{ /if }}
+    {{ if character_limit }}maxlength="{{ character_limit }}"{{ /if }}
+    {{ if js_driver }}{{ js_attributes }}{{ /if }}
+    {{ if validate|contains:required }}required{{ /if }}
+>
+    {{ value }}
+</textarea>

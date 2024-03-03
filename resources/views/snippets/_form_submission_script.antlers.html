@@ -1,0 +1,102 @@
+{{ section:cloudflare_turnstile }}
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+{{ /section:cloudflare_turnstile }}
+<script>
+    // Wait until all content loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        // Select the form and store it in a variable
+        const form = document.querySelector("#{{id}} form");
+        // Add event listener for form submission
+        form.addEventListener("submit", function (e) {
+            // Prevent default submission
+            e.preventDefault();
+            // Get form data
+            var data = new FormData(form);
+            // Grab the Turnstile response from the generated field
+            const turnstileResponse = form.querySelector('input[name="cf-turnstile-response"]');
+            //if field and value, append it to the FormData object with the new key name.
+            if (turnstileResponse && turnstileResponse.value) {
+                // Append the Turnstile response as 'cf_turnstile_response'
+                data.append('cf_turnstile_response', turnstileResponse.value);
+            };
+            // Create a new AJAX request
+            var request = new XMLHttpRequest();
+            // Select submit button
+            var submit = form.querySelector("button[type=submit]");
+            // Select the textContent of the submit button
+            var submitTextContent = submit.textContent;
+            // Select the errorList
+            var errorList = form.querySelector(".form-errors");
+            // Select the Success message
+            var successMessage = form.querySelector(".form-success");
+            // Disable submit button
+            submit.disabled = true;
+            // Change submit button text to notify user a submission is in progress
+            submit.innerHTML = "Sending, please wait..."; //Changes submit button text to notify user a submission is in progress
+                //Defines callback function
+                request.onreadystatechange = function (data) {
+                    //Creates a callback function
+                    if (data.target.response) {
+                        //Checks if there is a response
+                        const json = JSON.parse(data.target.response); //Parses JSON response
+                        const errors = json.errors;
+                        //Error Script
+                        if (errors) {
+                            //Checks if submission response returned errors
+                            Array.from(errorList.children).forEach(
+                                (errorItem) => {
+                                    //Selects all child elements of errorList and runs script for each error
+                                    errorList.removeChild(errorItem); //Removes current error message
+                                }
+                            );
+                            errors.forEach((error) => {
+                                //Selects errors messages from the response and runs script for each
+                                const newLi = document.createElement("li"); //Creates new list item
+                                newLi.innerHTML = error; //Populates list item with error message
+                                errorList.appendChild(newLi); //Populates errors list with error list item
+                            });
+                            errorList.classList.remove("hidden"); //Shows errors
+                            successMessage.classList.add("hidden"); //Hides success message
+                            submit.disabled = false; //Enables submit button again
+                            submit.innerHTML = `${submitTextContent}`; //Returns submit button to defualt content
+                        }
+
+                        //Success Script
+                        if (json.success) {
+                            //Checks if submission response was successful
+                            errorList.classList.add("hidden"); //Hides errors
+                            successMessage.classList.remove("hidden"); //Shows success message
+                            form.reset(); //Resets form content for new submissions to take place
+                            submit.disabled = false; //Enables submit button again
+                            submit.innerHTML = `${submitTextContent}`; //returns submit button to defualt content
+                        }
+                    }
+
+                    //Form Reset Script
+                    if (data.currentTarget.status == 200) {
+                        //Checks if submission was successful
+                        form.reset(); //Resets form content for new submissions to take place
+                        submit.disabled = false; //Enables submit button again
+                        submit.innerHTML = `${submitTextContent}`; //returns submit button to defualt content
+                    }
+
+                    // Handle 500 error
+                    if (data.currentTarget.status == 500) {
+                        // Checks if submission returned a server error
+                        submit.innerHTML = "Server Error - Please contact site administrator"; // Changes submit button text to notify user of server error
+                        submit.disabled = true; // Disable submit button
+                        submit.classList.add("!bg-gray-500"); // Changes submit button background to gray
+                    }
+                };
+
+                //Creates and sends AJAX request
+                request.open(form.method, form.action); //Creates request
+                request.setRequestHeader("X-Requested-With", "XMLHttpRequest"); // Sets request header
+                request.setRequestHeader(
+                    "X-CSRF-Token",
+                    document.querySelector('input[name="_token"]').value
+                ); //Adds token
+                request.send(data); //Sends request
+            });
+    });
+</script>

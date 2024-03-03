@@ -1,0 +1,149 @@
+{{#
+	@name media
+	@desc The media component. A responsive imageset in a media element. See `resources/views/components/_figure.antlers.html` for an example on how to use this.
+
+    Implementation:
+    {{ partial:components/media media="" cover="" focus="" width="" height="" lazy="" class="" }}
+
+    media
+    - {content of an asset field with single entry}
+
+    cover
+    - false (default)
+    - true
+
+    focus
+    - {x percentage} - {y percentage}
+
+    width
+    - {any valid width value}
+    
+    height
+    - {any valid height value}
+    
+    lazy
+    - false (default)
+    - true
+    - splide
+
+    class
+    - {any missing classes}
+
+    full documentation @ https://www.notion.so/Media-557b72925ed243eea4262794acd59f32
+#}}
+
+<!-- /components/_media.antlers.html -->
+{{if media}}
+    {{ if media.url|full_urls|contains('.svg') }}
+    <picture>
+        {{ svg :src="media" :class="class" }}
+        <span class="sr-only">{{if alt_text}}{{ alt_text ensure_right='.' }}{{else}}{{ media.alt ensure_right='.' }}{{/if}}</span>
+    </picture>
+    {{ elseif media.url|full_urls|contains('.gif') }}
+    <picture>
+        <img class="{{ class }}" src="{{ media.url }}" alt="{{if alt_text}}{{ alt_text ensure_right='.' }}{{else}}{{ media.alt ensure_right='.' }}{{/if}}" />
+    </picture>
+    {{elseif media.is_image}}
+    <picture>
+        {{ asset :url="media" }}
+            {{ if lazy === 'splide' }}
+                <img
+                    {{ if cover }}
+                        class="object-cover w-full h-full {{ class }}"
+                        style="object-position: {{ focus | background_position }}"
+                    {{ else }}
+                        class="object-contain w-full h-auto {{ class }}"
+                    {{ /if }}
+                    data-splide-lazy="{{media.url}}"
+                    data-splide-lazy-srcset="
+                        {{ glide:media preset='xs' }} 320w,
+                        {{ glide:media preset='sm' }} 480w,
+                        {{ glide:media preset='md' }} 768w,
+                        {{ glide:media preset='lg' }} 1280w,
+                        {{ glide:media preset='xl' }} 1440w,
+                    "
+                    sizes="{{ sizes ?? '100vw' }}"
+                    alt="{{ alt ensure_right='.' }}"
+                >
+            {{else}}
+                <source
+                    srcset="
+                        {{ glide:media preset='xs-webp' }} 320w,
+                        {{ glide:media preset='sm-webp' }} 480w,
+                        {{ glide:media preset='md-webp' }} 768w,
+                        {{ glide:media preset='lg-webp' }} 1280w,
+                        {{ glide:media preset='xl-webp' }} 1440w
+                    "
+                    sizes="{{ sizes ?? '100vw' }}"
+                    type="image/webp"
+                >
+                <source
+                    srcset="
+                        {{ glide:media preset='xs' }} 320w,
+                        {{ glide:media preset='sm' }} 480w,
+                        {{ glide:media preset='md' }} 768w,
+                        {{ glide:media preset='lg' }} 1280w,
+                        {{ glide:media preset='xl' }} 1440w
+                    "
+                    sizes="{{ sizes ?? '100vw' }}"
+                    type="{{ media.mime_type }}"
+                >
+                <img
+                    {{ if cover }}
+                        class="object-cover w-full h-full {{ class }}"
+                        style="object-position: {{ focus | background_position }}"
+                    {{ else }}
+                        class="{{ class }}"
+                    {{ /if }}
+                    src="{{ glide:media preset='lg' }}"
+                    alt="{{if alt_text}}{{ alt_text ensure_right='.' }}{{else}}{{ alt ensure_right='.' }}{{/if}}"
+                    {{if width}} width="{{ media.width }}" {{/if}}
+                    {{if height}} height="{{ media.height }}" {{/if}}
+                    {{ if lazy }}
+                        loading="lazy"
+                    {{ /if }}
+                >
+            {{/if}}
+        {{ /asset }}
+    </picture>
+    {{elseif media.is_video}}
+    <div class="relative">
+        <div class="relative aspect-w-16 aspect-h-9 z-0">
+            <video class="video-player" width="100%" height="auto" {{ if lazy }}loading="lazy" {{ /if }}preload="none" poster="{{glide :src="media.video_preview.url" fit="cover" width="1600px" height="900px" format='webp'}}">
+                <source src="{{media.url}}" type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+        </div>
+        <button class="video-play-button absolute top-0 h-full w-full flex items-center justify-center">
+            <svg class="z-20 h-16 w-16 pointer-events-none" viewBox="0 0 105 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M52.5 88.1998C32.76 88.1998 16.8 72.2398 16.8 52.4998C16.8 32.7598 32.76 16.7998 52.5 16.7998C72.24 16.7998 88.2 32.7598 88.2 52.4998C88.2 72.2398 72.24 88.1998 52.5 88.1998ZM52.5 20.9998C35.07 20.9998 21 35.0698 21 52.4998C21 69.9298 35.07 83.9998 52.5 83.9998C69.93 83.9998 84 69.9298 84 52.4998C84 35.0698 69.93 20.9998 52.5 20.9998Z" fill="white"/>
+                <path d="M42 70.7705V34.2305L73.5 52.5005L42 70.7705ZM46.2 41.3705V63.4205L65.1 52.2905L46.2 41.3705Z" fill="white"/>
+            </svg>
+            <div class="z-10 opacity-40 inset-0 absolute pointer-events-none"></div>
+        </button>
+    </div>
+    <script>
+        //Play
+        document.querySelectorAll('.video-play-button').forEach((button) => {
+            button.addEventListener("click", (event) => {
+                const videoPlayer = event.target.previousElementSibling.querySelector('.video-player');
+                videoPlayer.play();
+                button.classList.add('hidden');
+                button.classList.remove('flex');
+                let att = document.createAttribute('controls');
+                videoPlayer.setAttributeNode(att);
+            })
+        });
+        //Pause
+        document.querySelectorAll('.video-player').forEach((player) => {
+            player.onpause = (event) => {
+                const button = event.target.parentNode.nextElementSibling;
+                button.classList.add('flex');
+                button.classList.remove('hidden');
+                player.removeAttribute('controls');
+            };
+        });
+    </script>
+    {{ /if }}
+{{ /if }}
+<!-- End: /components/_media.antlers.html -->

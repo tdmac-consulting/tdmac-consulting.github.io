@@ -1,0 +1,185 @@
+title: 'Component - Socials'
+fields:
+  -
+    handle: socials
+    field:
+      collapse: false
+      previews: true
+      fullscreen: true
+      sets:
+        socials:
+          display: Socials
+          instructions: null
+          icon: social-share
+          sets:
+            email:
+              display: Email
+              instructions: null
+              icon: mail-sign-at
+              fields:
+                -
+                  handle: prefix
+                  field:
+                    input_type: text
+                    default: 'mailto:'
+                    antlers: false
+                    type: text
+                    display: Prefix
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    visibility: hidden
+                    replicator_preview: true
+                    hide_display: false
+                -
+                  handle: email
+                  field:
+                    input_type: email
+                    antlers: false
+                    type: text
+                    display: Email
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+            phone:
+              display: Phone
+              instructions: null
+              icon: phone-telephone-call
+              fields:
+                -
+                  handle: prefix
+                  field:
+                    input_type: text
+                    default: 'tel:'
+                    antlers: false
+                    type: text
+                    display: Prefix
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    visibility: hidden
+                    replicator_preview: true
+                    hide_display: false
+                -
+                  handle: phone_number
+                  field:
+                    input_type: tel
+                    antlers: false
+                    type: text
+                    display: 'Phone Number'
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+            instagram:
+              display: Instagram
+              instructions: null
+              icon: social-instagram
+              fields:
+                -
+                  handle: prefix
+                  field:
+                    input_type: text
+                    default: 'https://facebook.com/'
+                    antlers: false
+                    type: text
+                    display: Prefix
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    visibility: hidden
+                    replicator_preview: true
+                    hide_display: false
+                -
+                  handle: social_handle
+                  field:
+                    input_type: text
+                    prepend: 'https://www.instagram.com/'
+                    antlers: false
+                    type: text
+                    display: 'Social Handle'
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+            facebook:
+              display: Facebook
+              instructions: null
+              icon: social-facebook
+              fields:
+                -
+                  handle: prefix
+                  field:
+                    input_type: text
+                    default: 'https://facebook.com/'
+                    antlers: false
+                    type: text
+                    display: Prefix
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    visibility: hidden
+                    replicator_preview: true
+                    hide_display: false
+                -
+                  handle: social_handle
+                  field:
+                    input_type: text
+                    antlers: false
+                    type: text
+                    display: 'Social Handle'
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+                    prepend: 'https://facebook.com/'
+            twitter:
+              display: X
+              instructions: '(formally known as Twitter)'
+              icon: social-twitter
+              fields:
+                -
+                  handle: prefix
+                  field:
+                    input_type: text
+                    default: 'https://x.com/'
+                    antlers: false
+                    type: text
+                    display: Prefix
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    visibility: hidden
+                    replicator_preview: true
+                    hide_display: false
+                -
+                  handle: social_handle
+                  field:
+                    input_type: text
+                    prepend: 'https://x.com/'
+                    antlers: false
+                    type: text
+                    display: 'Social Handle'
+                    icon: text
+                    listable: hidden
+                    instructions_position: above
+                    visibility: visible
+                    replicator_preview: true
+                    hide_display: false
+      type: replicator
+      display: Socials
+      icon: replicator
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

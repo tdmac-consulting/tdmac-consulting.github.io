@@ -1,0 +1,23 @@
+title: 'Component - Block Quote'
+fields:
+  -
+    handle: quote
+    field:
+      antlers: false
+      display: Quote
+      type: textarea
+      icon: textarea
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: author
+    field:
+      input_type: text
+      antlers: false
+      display: Author
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible

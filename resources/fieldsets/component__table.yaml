@@ -1,0 +1,45 @@
+title: 'Component  - Table'
+fields:
+  -
+    handle: top_line_header
+    field:
+      default: false
+      display: 'Top Line Header'
+      type: toggle
+      icon: toggle
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: first_col_header
+    field:
+      default: false
+      display: 'First Col Header'
+      type: toggle
+      icon: toggle
+      width: 25
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+  -
+    handle: caption
+    field:
+      input_type: text
+      antlers: false
+      display: Caption
+      type: text
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      width: 50
+  -
+    handle: table
+    field:
+      display: Table
+      type: table
+      icon: table
+      listable: hidden
+      instructions_position: above
+      visibility: visible

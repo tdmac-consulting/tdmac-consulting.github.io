@@ -1,0 +1,27 @@
+<!-- /footer/_footer.antlers.html -->
+<footer class="footer w-full flex flex-col justify-center items-center py-6 px-4 gap-4 md:px-6 lg:gap-6 lg:px-8 xl:px-12 text-neutralLight bg-primary min-h-[5rem]">
+    {{# Logo #}}
+    <div class="">
+        {{partial:components/logo type="rectangular" class="max-w-xs"}}
+    </div>
+    {{# Socials #}}
+    {{ partial:components/socials class="text-neutralLight"}}
+    {{# Footer Menu #}}
+    <nav class="">
+        <ul class="flex flex-col items-center justify-center md:flex-row md:flex-wrap">
+            {{ nav:footer_navigation select="title|url" }}
+            <li class="text-center">
+                <a href="{{url}}" class="text-center">
+                    {{title}}
+                </a>
+            </li>
+            {{ /nav:footer_navigation }}
+        </ul>
+    </nav>
+    {{# Copyright #}}
+    <div class="flex flex-col items-center justify-center">
+        <p class="text-center  text-sm">{{company:company_name}} is the trading name of Thomas D Macdonald, a UK Sole Trader.</p>
+        <p class="text-center  text-sm">&#169; {{ now | format:Y }} - All Rights Reserved</p>
+    </div>
+</footer>
+<!-- End: /footer/_footer.antlers.html -->

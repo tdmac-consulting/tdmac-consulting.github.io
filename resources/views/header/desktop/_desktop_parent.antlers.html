@@ -1,0 +1,149 @@
+{{ nav select="url|title|visibility" max_depth="3" include_home="false" }}
+{{ if visibility }}
+<li id="{{title | camelize }}" class="{{ !children ?: 'parent' }} relative flex flex-row gap-2.5">
+    {{# Link #}}
+    <a href="{{url}}" class="p-2.5 -m-2.5 rounded-md align-middle font-semibold text-lg text-neutralLight drop-shadow-xl shadow-primary hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">{{title}}</a>
+    {{if children}}
+    {{# Button #}}
+    <button type="button" class="button p-2.5 -m-2.5 rounded-md text-neutralLight drop-shadow-xl shadow-primary hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+        {{# Accessibility Label #}}
+        <span class="sr-only">{{title}} Menu</span>
+        {{# Icon #}}
+        <div class="relative pointer-events-none text-inherit">
+            {{# Static #}}
+            <svg class="relative h-6 w-6 text-inherit" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+            </svg>
+            {{# Dynamic #}}
+            <svg class="indicator absolute inset-0 h-6 w-6 text-inherit rotate-90 transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+            </svg>
+        </div>
+    </button>
+    <ul
+        class="menu
+            absolute z-10 top-10 left-1/2 transform -translate-x-1/2
+            hidden
+            flex-col
+            min-w-fit w-full max-w-full
+            mt-3 p-2.5
+            bg-accent ring-2 ring-neutralLight overflow-hidden
+            md:hidden {{# Toggled class #}}
+        "
+    >
+            {{ partial:header/desktop/desktop_child }}
+    </ul>
+    {{/if}}
+</li>
+{{ /if }}
+{{ /nav }}
+{{# Desktop Parent Script #}}
+{{ section:desktop_parent_script }}
+<script>
+    // Wait until DOM Content Loaded
+    document.addEventListener("DOMContentLoaded", () => {
+        /* Constants */
+        // Select Desktop Menu
+        const desktopMenu = document.querySelector('#desktopMenu');
+        // Select Parent Elements
+        const parents = desktopMenu.querySelectorAll('.parent');
+
+        /* Function */
+        //Helper function to adjust the menu position in case of escaping the window
+		const checkBounds = (menu) => {
+			// Get the width of the viewport
+			const viewportWidth = window.innerWidth;
+			// Get the bounding rectangles of the dropdown menu
+			const dropdownRect = menu.getBoundingClientRect();
+			// Calculate the left and right distances from the dropdown menu to the edge of the screen
+			const leftDistance = dropdownRect.left;
+			const rightDistance = viewportWidth - dropdownRect.right;
+			// If the dropdown menu is off the left edge of the screen
+			if (leftDistance < 0) {
+				// Remove the classes that center the dropdown menu
+				menu.classList.remove('left-1/2', 'transform', '-translate-x-1/2');
+				// Add the class that aligns the dropdown menu to the left edge of the button
+				menu.classList.add('left-0');
+			}
+			// If the dropdown menu is off the right edge of the screen
+			else if (rightDistance < 0) {
+				// Remove the classes that center the dropdown menu
+				menu.classList.remove('left-1/2', 'transform', '-translate-x-1/2');
+				// Add the class that aligns the dropdown menu to the right edge of the button
+				menu.classList.add('right-0');
+			}
+			// Remove any
+			else {
+				// Remove the class that aligns the dropdown menu to the left edge of the button
+				menu.classList.remove('left-0');
+				// Remove the class that aligns the dropdown menu to the right edge of the button
+				menu.classList.remove('right-0');
+				// Add the classes that center the dropdown menu
+				menu.classList.add('left-1/2', 'transform', '-translate-x-1/2');
+			}
+		}
+        // Declare Toggle Children Function
+        function toggleChildMenu(parent, button) {
+            // Select Menu
+            const menu = parent.querySelector('*>.menu');
+            // Select Indicator
+            const indicator = button.querySelector('.indicator');
+            //Rotate Indicator
+            indicator.classList.toggle('rotate-90');
+            //Toggle Menu Visibility
+            menu.classList.toggle('md:hidden');
+            menu.classList.toggle('md:flex');
+            menu.classList.toggle('open');
+            //Check bounds and adjust
+            checkBounds(menu);
+        }
+        // Declare Close Children Function
+        function closeChildren(e) {
+            // If event target not inside current open menu or the menu itself
+            if ( !e.target.closest('.open') && e.target !== mobileMenu ) {
+                // Stop Event Propagation
+                e.stopPropagation();
+                // Find open menu
+                const menuToClose = desktopMenu.querySelector('.open');
+                // If there is an open menu, close it
+                if (menuToClose) {
+                    // Find parent element of open menu
+                    const parent = menuToClose.closest('.parent');
+                    // Select Button 
+                    const button = parent.querySelector('*>button');
+                    // Add 'Open' event listener to button
+                    button.addEventListener('click', openChild);
+                    // Remove 'Close' event listener from document
+                    button.removeEventListener('click', closeChildren);
+                    // Close menu
+                    toggleChildMenu(parent, button);
+                }
+            }
+        }
+        //Declare Open Child Function
+        function openChild(e) {
+            // Close any open children
+            closeChildren(e);
+            // Stop Event Propagation
+            e.stopPropagation();
+            // Remove 'Open' event listener from button
+            e.target.removeEventListener('click', openChild);
+            // Add 'Close' event listener to body
+            document.addEventListener('click', closeChildren);
+            // Select specific parent of button clicked
+            const parent = e.target.closest('.parent');
+            // Toggle Child menu
+            toggleChildMenu(parent, e.target);
+        }
+
+        /* Actions */
+        // For each parent Add 'Open' event listener
+        parents.forEach(parent => {
+            // Select Button
+            const button = parent.querySelector('*>button');
+            // Add listener for button
+            button.addEventListener('click', openChild);
+        })
+    })
+</script>
+{{ /section:desktop_parent_script }}

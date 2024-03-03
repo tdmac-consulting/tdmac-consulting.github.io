@@ -1,0 +1,29 @@
+<!-- /blocks/_content_with_image.antlers.html -->
+<section class="content-with-image">
+    <div class="relative flex flex-col gap-6 lg:gap-8 xl:gap-16 max-w-prose mx-auto lg:max-w-full lg:mx-0 {{ if image_position == "right" }}lg:flex-row-reverse{{else}}lg:flex-row{{ /if }}">
+        {{# Image #}}
+        <div class="lg:flex lg:justify-center lg:items-center lg:overflow-hidden lg:min-w-[50%] ">
+            <div class="relative lg:w-full lg:h-auto">
+                {{ partial:components/media :media="media" lazy="true" cover="true" class="max-h-[calc((9/16)*(65ch-2rem))] lg:max-h-[calc((9/16)*(50vw-1.5rem))]" }}
+            </div>
+
+        </div>
+        {{# Body Content #}}
+        <div class="body-content lg:w-1/2 flex flex-col justify-center gap-6 px-standard lg:px-0 {{ if image_position == "right" }}lg:pl-8 xl:pl-16{{else}}lg:pr-8 xl:pr-16{{ /if }}">
+            {{ if heading  || subheading }}
+            <div class="">
+                {{ if heading }}
+                <h2 class="text-sm xs:text-2xl md:text-3xl lg:text-4xl uppercase">{{ heading }}</h2>
+                {{ /if }}
+                {{ if subheading }}
+                <h3 class="font-light text-xs xs:text-xl md:text-2xl lg:text-3xl ">{{ subheading }}</h3>
+                {{ /if }}
+            </div>
+            {{ /if }}
+            {{if content}}
+            {{ partial:components/bard_content class="max-w-prose" }}
+            {{ /if }}
+        </div>
+    </div>
+</section>
+<!-- End: /blocks/_content_with_image.antlers.html -->

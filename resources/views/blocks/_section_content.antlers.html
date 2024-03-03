@@ -1,0 +1,13 @@
+<!-- /blocks/_section_content.antlers.html -->
+<section class="section-content flex flex-col gap-4 md:gap-6 lg:gap-8 max-w-3xl mx-auto px-standard">
+    {{ if heading }}
+    <h2 class="text-sm xs:text-2xl md:text-4xl lg:text-5xl xl:text-6xl uppercase tracking-ultrawide text-center">{{ heading }}</h2>
+    {{ /if }}
+    {{ if subheading }}
+    <h3 class="font-light text-xs xs:text-xl md:text-3xl lg:text-4xl xl:text-5xl uppercase tracking-ultrawide text-center">{{ subheading }}</h3>
+    {{ /if }}
+    {{if content}}
+    {{ partial:components/bard_content class="max-w-prose" }}
+    {{ /if }}
+</section>
+<!-- End: /blocks/_section_content.antlers.html -->

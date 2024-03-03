@@ -1,0 +1,66 @@
+title: 'Component - Bard Content'
+fields:
+  -
+    handle: content
+    field:
+      collapse: true
+      always_show_set_button: false
+      previews: true
+      smart_typography: false
+      buttons:
+        - bold
+        - italic
+        - strikethrough
+        - anchor
+        - unorderedlist
+        - orderedlist
+      save_html: false
+      inline: false
+      toolbar_mode: fixed
+      link_noopener: false
+      link_noreferrer: false
+      target_blank: false
+      reading_time: true
+      fullscreen: true
+      allow_source: true
+      enable_input_rules: true
+      enable_paste_rules: true
+      antlers: false
+      remove_empty_nodes: trim
+      display: Content
+      type: bard
+      icon: bard
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      sets:
+        main:
+          display: Main
+          instructions: null
+          icon: null
+          sets:
+            block_quote:
+              display: 'Block quote'
+              instructions: null
+              icon: null
+              fields:
+                -
+                  import: component__block_quote
+            image:
+              display: Image
+              instructions: null
+              icon: null
+              fields:
+                -
+                  import: component__media
+            table:
+              display: Table
+              instructions: null
+              icon: null
+              fields:
+                -
+                  import: component__table
+      container: assets
+      replicator_preview: true
+      word_count: true
+      hide_display: false

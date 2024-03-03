@@ -1,0 +1,41 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+          display: Name
+          instructions_position: above
+          listable: hidden
+          visibility: visible
+          input_type: text
+          antlers: false
+      -
+        import: component__block_quote
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          localizable: true
+      -
+        handle: tags
+        field:
+          mode: typeahead
+          create: true
+          taxonomies:
+            - tags
+          display: Tags
+          type: terms
+          icon: taxonomy
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+title: Testimonial

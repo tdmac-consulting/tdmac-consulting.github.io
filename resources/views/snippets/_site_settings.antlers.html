@@ -1,0 +1,17 @@
+<!-- resources/views/snippets/_site_settings.antlers.html -->
+{{ if site_settings:disable_telephone_detection }}
+    <meta name="format-detection" content="telephone=no">
+{{ /if }}
+{{ if site_settings:disable_email_detection }}
+    <meta name="format-detection" content="email=no">
+{{ /if }}
+{{ if site_settings:disable_address_detection }}
+    <meta name="format-detection" content="address=no">
+{{ /if }}
+{{ if site_settings:apple_mobile_web_app }}
+    <meta name="apple-mobile-web-app-capable" content="yes">
+{{ /if }}
+{{ if site_settings:android_mobile_web_app }}
+    <meta name="mobile-web-app-capable" content="yes">
+{{ /if }}
+<!-- EnND: resources/views/snippets/_site_settings.antlers.html -->

@@ -1,0 +1,76 @@
+title: 'Block - FAQs'
+fields:
+  -
+    handle: heading
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: Heading
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: select_faqs_by
+    field:
+      options:
+        all: All
+        entries: Entries
+        tags: Tags
+      multiple: false
+      max_items: 1
+      clearable: false
+      searchable: true
+      taggable: false
+      push_tags: false
+      cast_booleans: false
+      default: all
+      display: 'Select FAQs by:'
+      type: select
+      icon: select
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      validate:
+        - required
+  -
+    handle: entries
+    field:
+      mode: default
+      create: true
+      collections:
+        - faqs
+      display: Entries
+      type: entries
+      icon: entries
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      validate:
+        - sometimes
+      if:
+        select_faqs_by: 'equals entries'
+  -
+    handle: tag
+    field:
+      mode: select
+      create: false
+      taxonomies:
+        - tags
+      display: Tag
+      type: terms
+      icon: taxonomy
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      validate:
+        - required
+        - sometimes
+      replicator_preview: true
+      max_items: 1
+      hide_display: false
+      if:
+        select_faqs_by: 'equals tags'

@@ -1,0 +1,31 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "mix",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "production": "mix --production"
+    },
+    "dependencies": {
+        "@tailwindcss/aspect-ratio": "^0.4.2",
+        "@tailwindcss/forms": "^0.5.3",
+        "autoprefixer": "^10.4.14",
+        "cross-env": "^7.0",
+        "laravel-mix": "^6.0",
+        "postcss": "^8.4.23",
+        "postcss-import": "^15.1.0",
+        "postcss-nested": "^6.0.1",
+        "postcss-preset-env": "^8.3.2",
+        "tailwindcss": "^3.3.2",
+        "vue-template-compiler": "^2.6.12",
+        "@tailwindcss/container-queries": "^0.1.1",
+        "color": "^4.2.3",
+        "js-yaml": "^4.1.0"
+    },
+    "devDependencies": {
+        "browser-sync": "^2.27.12",
+        "browser-sync-webpack-plugin": "^2.3.0"
+    }
+}

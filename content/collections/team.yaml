@@ -1,0 +1,16 @@
+title: Team
+template: team
+layout: layout
+mount: 4e81f205-d8cd-4621-a796-83ccac0eb592
+revisions: false
+route: '{mount}/{slug}'
+sort_dir: asc
+default_status: draft
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

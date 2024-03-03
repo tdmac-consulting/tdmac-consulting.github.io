@@ -1,0 +1,85 @@
+title: 'All Blocks - Page Builder'
+fields:
+  -
+    handle: blocks
+    field:
+      collapse: true
+      previews: true
+      sets:
+        main:
+          display: Main
+          instructions: null
+          icon: null
+          sets:
+            all_team_block:
+              display: 'All Team Block'
+              instructions: null
+              icon: user-multiple
+              fields:
+                -
+                  import: block__all_team_block
+            contact_block:
+              display: 'Contact Block'
+              instructions: null
+              icon: null
+              fields:
+                -
+                  import: block__contact_block
+            contact_form:
+              display: 'Contact Form'
+              instructions: null
+              icon: form-drop-down-menu
+              fields:
+                -
+                  import: block__contact_form
+            content_with_image:
+              display: 'Content with Image'
+              instructions: null
+              icon: content-book-open
+              fields:
+                -
+                  import: block__content_with_image
+            faqs:
+              display: FAQs
+              instructions: null
+              icon: alert-help-question
+              fields:
+                -
+                  import: block__faqs
+            gallery:
+              display: Gallery
+              instructions: null
+              icon: media-image-picture-gallery
+              fields:
+                -
+                  import: block__gallery
+            map_block:
+              display: 'Map Block'
+              instructions: null
+              icon: travel-map
+              fields:
+                -
+                  import: block__map_block
+            section_content:
+              display: 'Section Content'
+              instructions: null
+              icon: file-content-list
+              fields:
+                -
+                  import: block__section_content
+            testimonials:
+              display: Testimonials
+              instructions: null
+              icon: mail-chat-bubble-text
+              fields:
+                -
+                  import: block__testimonials
+      display: Blocks
+      type: replicator
+      icon: replicator
+      listable: false
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      fullscreen: true
+      hide_display: false

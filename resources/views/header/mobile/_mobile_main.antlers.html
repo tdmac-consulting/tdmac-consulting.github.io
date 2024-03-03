@@ -1,0 +1,73 @@
+<!-- /header/mobile/_mobile_main.antlers.html -->
+<div id="mobileMenu" class="menu fixed top-0 left-0 z-40 flex lg:hidden w-screen pt-[env(safe-area-top)] pl-[env(safe-area-left)]  pr-[env(safe-area-right)] bg-primary shadow-md transform -translate-x-full motion-safe:transition-transform">
+    <ul class="flex flex-col w-full h-full max-h-[calc(100vh-64px)] mt-[64px] px-4 pb-6 overflow-y-scroll overflow-x-hidden">
+        {{ partial:header/mobile/mobile_parent }}
+    </ul>
+</div>
+<!-- End: /header/mobile/_mobile_main.antlers.html -->
+{{ section:mobile_menu_script }}
+<script >
+    // Wait until DOM Content Loaded
+    document.addEventListener("DOMContentLoaded", () => {
+        /* Constants */
+        // Select body
+        const main = document.querySelector('main');
+        // Select Toggle Button
+        const button = document.querySelector('#toggleMobileMenuButton');
+        // Select Indicator 1
+        const indicator1 = button.querySelector('.indicator-1');
+        // Select Indicator 2
+        const indicator2 = button.querySelector('.indicator-2');
+        // Select Indicator 3
+        const indicator3 = button.querySelector('.indicator-3');
+        // Select Mobile Menu
+        const mobileMenu = document.querySelector('#mobileMenu');
+
+        /* Functons */
+        //Declare Menu Toggle Function
+        function toggleMobileMenu() {
+            //Modify Indicator 1
+            indicator1.classList.toggle('rotate-45');
+            indicator1.classList.toggle('-mt-1.5');
+            //Modify Indicator 2
+            indicator2.classList.toggle('opacity-0');
+            //Modify Indicator 3
+            indicator3.classList.toggle('-rotate-45');
+            indicator3.classList.toggle('mt-1.5');
+            //Toggle Menu Visibility
+            mobileMenu.classList.toggle('-translate-x-full');
+            //Toggle button position
+            //button.classList.toggle('xs:-translate-x-[calc(100vw-300px)]');
+        }
+        //Declare Open Menu Function
+        function openMobileMenu(e) {
+            // Stop event propogating
+            e.stopPropagation();
+            // Remove 'Open' Event listener from the button
+            button.removeEventListener('click', openMobileMenu);
+            // Add 'Close' Event listener to document
+            document.addEventListener('click', closeMobileMenu);
+            // Toggle Mobile menu
+            toggleMobileMenu();
+        }
+        //Declare Close Menu Function
+        function closeMobileMenu(e) {
+            // Stop event propogating
+            e.stopPropagation();
+            // If event target is not a child of the mobile menu or the menu itself
+            if ( !e.target.closest('#mobileMenu') && e.target !== mobileMenu ) {
+                // Remove 'Close' Event listener to document
+                document.removeEventListener('click', closeMobileMenu);
+                // Add 'Open' Event listener from the button
+                button.addEventListener('click', openMobileMenu);
+                // Toggle Mobile menu
+                toggleMobileMenu();
+            }
+        }
+
+        /* Actions */
+        // Add 'Open Menu' Listener to initiate event loop
+        button.addEventListener('click', openMobileMenu);
+    })
+</script>
+{{ /section:mobile_menu_script }}
