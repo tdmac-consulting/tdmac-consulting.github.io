@@ -6,23 +6,21 @@
     },
     "dependencies": {
         "@tailwindcss/aspect-ratio": "^0.4.2",
+        "@tailwindcss/container-queries": "^0.1.1",
         "@tailwindcss/forms": "^0.5.3",
         "autoprefixer": "^10.4.14",
+        "color": "^4.2.3",
         "cross-env": "^7.0",
+        "js-yaml": "^4.1.0",
         "postcss": "^8.4.23",
         "postcss-import": "^15.1.0",
         "postcss-nested": "^6.0.1",
         "postcss-preset-env": "^8.3.2",
         "tailwindcss": "^3.3.2",
-        "vue-template-compiler": "^2.6.12",
-        "@tailwindcss/container-queries": "^0.1.1",
-        "color": "^4.2.3",
-        "js-yaml": "^4.1.0"
+        "vue-template-compiler": "^0.1.0"
     },
     "devDependencies": {
-        "browser-sync": "^2.27.12",
-        "browser-sync-webpack-plugin": "^2.3.0",
-        "vite": "^3.0.2",
-        "laravel-vite-plugin": "^0.6.0"
+        "laravel-vite-plugin": "^0.6.0",
+        "vite": "^3.0.2"
     }
 }

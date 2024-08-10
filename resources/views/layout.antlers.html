@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{ branding:favicon | favicon }}
         {{# Stylesheet #}}
-        <link rel="stylesheet" href="{{ mix src='css/tailwind.css' }}">
+        {{ vite src='resources/css/tailwind.css' }}
         {{ partial:snippets/seo }}
         {{ partial:snippets/site_settings }}
         {{# Cloudflare #}}
