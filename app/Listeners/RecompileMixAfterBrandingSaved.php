@@ -30,8 +30,8 @@ class RecompileMixAfterBrandingSaved
         if ($event->globals->handle() === 'branding') {
             // Checks the environment status
             if ( env('APP_ENV') === 'production' ) {
-                // Run the 'npm run prod' command
-                exec('npm run prod');
+                // Run the 'npm run build' command
+                exec('npm run build');
             } else {
                 // Run the 'npm run dev' command
                 exec('npm run dev');
